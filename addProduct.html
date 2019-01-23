@@ -1,0 +1,146 @@
+<!DOCTYPE html5>
+<html>
+
+<head>
+    <title>
+        <Header>
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/addproduct.css">
+    <script src="js/form-validation.js"></script>
+    <!-- <script>
+        function addRecord() {
+            var name = document.getElementById('w-name').values
+        }    
+    </script> -->
+
+    <style>
+        .add-product h2{
+            text-align: center;            
+            margin-bottom: 25px;
+        }
+        .button-submit{
+            text-align: center;
+            display: none;
+        }
+        .btn-danger{
+            width: 100px;
+            border: 1px solid black;
+        }
+        .btn-primary{
+            width: 100px;
+        }
+
+        table, td {
+          /* border: 1px solid black; */
+        }
+        .add tbody tr td{
+            padding: 0 11px;
+            width: -webkit-fill-available;
+
+        }
+
+        .tableRecord table tbody tr td{
+            padding: 0 11px;
+
+        }
+
+
+        </style>
+</head>
+
+</head>
+
+<body>
+
+    <div class="container-fluid add-product">
+        <h2>Add Product</h2>
+        <hr>
+
+        <form>
+            <table align="center" class="add">
+                <tr>
+                    <td> <select type="product-type" placeholder="select Product Type" id="product_type" class="form-control"
+                            autofocus>
+                            <option value="">Type</option>
+                            <option value="pesticide">Pesticide</option>
+                            <option value="seeds">Seeds</option>
+                            <option value="fertilizer">Fertilizer</option>
+                        </select>
+                    </td>
+                    <td><input class="form-control" type="text" id="billNo" placeholder="BillNO" required /></td>
+                    <td> <input class="form-control" type="text" id="name" placeholder="Name" required="required"></td>
+                    <td> <input class="form-control" type="text" id="qty" placeholder="Quantity" required="required"></td>
+                    <td> <input class="form-control" type="text" id="price" placeholder="Price"></td>
+                    <td> <input class="form-control" type="text" id="exDate" placeholder="Expiry" onfocus="(this.type='date')"></td>
+                    <td> <input class="form-control" type="text" id="wholeSaler" placeholder="WholeSaler"></td>
+                    <td> <button class="btn btn-primary" onclick="myFunction()">Add</button></td>
+                </tr>
+            </table>
+        </form>
+        <br><br><br>
+
+
+
+        <div class="tableRecord">
+
+            <table id="myTable" align="center">
+
+            </table>
+
+            <br>
+        </div>
+        <div class="button-submit" id="button-sub">
+            <a href="#" class="btn btn-success">Submit</a>
+        </div>
+
+
+        <script>
+            function myFunction() {
+
+
+                var w_product_type = document.getElementById('product_type').value;
+                var w_billNo = document.getElementById('billNo').value;
+                var w_name = document.getElementById('name').value;
+                var w_qty = document.getElementById('qty').value;
+                var w_price = document.getElementById('price').value;
+                var w_exDate = document.getElementById('exDate').value;
+                var w_wholeSaler = document.getElementById('wholeSaler').value;
+
+
+                var table = document.getElementById("myTable");
+                var row = table.insertRow(0);
+
+                var cell1 = row.insertCell(0).innerHTML = '<input  class="form-control col-lg-3" type="text" value=' + w_product_type + '>'
+                var cell2 = row.insertCell(1).innerHTML = '<input  class="form-control" type="text" value=' + w_billNo + '>'
+                var cell3 = row.insertCell(2).innerHTML = '<input  class="form-control" type="text" value=' + w_name + '>'
+                var cell4 = row.insertCell(3).innerHTML = '<input  class="form-control" type="text" value=' + w_qty + '>'
+                var cell5 = row.insertCell(4).innerHTML = '<input  class="form-control" type="text" value=' + w_price + '>'
+                var cell6 = row.insertCell(5).innerHTML = '<input  class="form-control" type="text" value=' + w_exDate + '>'
+                var cell7 = row.insertCell(6).innerHTML = '<input  class="form-control" type="text" value=' + w_wholeSaler + '>'
+                var cell8 = row.insertCell(7).innerHTML = '<button class="btn btn-danger" onclick=myDeleteFunction(this) >Remove</button>'
+                document.getElementById("product_type").value = null;
+                document.getElementById("billNo").value = null;
+                document.getElementById("name").value = null;
+                document.getElementById("qty").value = null;
+                document.getElementById("price").value = null;
+                document.getElementById("exDate").value = null;
+                document.getElementById("wholeSaler").value = null;
+
+                document.getElementById("product_type").focus();
+                document.getElementById("button-sub").style.display = "block";
+            }
+            function myDeleteFunction(r) {
+                var i = r.parentNode.parentNode.rowIndex;
+                document.getElementById("myTable").deleteRow(i);
+            }
+
+        </script>
+</body>
+
+</html>
